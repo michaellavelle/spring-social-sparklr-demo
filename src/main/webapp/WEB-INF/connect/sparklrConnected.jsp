@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-Twitter is now connected.  
+Sparklr is now connected.  
 
 <c:choose>
 <c:when test="${not empty springSocialSecurityConnectInterceptorSavedRequestUrl}">
