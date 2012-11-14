@@ -11,7 +11,7 @@
 
 <p>Please log in with a third party provider</p>
 
-  <form class="login"action="http://localhost:8080/signin/sparklr" method="POST">
+  <form class="login"action="http://localhost:8081/signin/sparklr" method="POST">
 	<p><input type="submit" value="Login with Sparklr" /></p>
 </form> 
 

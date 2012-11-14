@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<p>Hello World : 
+<p>Spring Social Sparklr Demo : 
 
 <c:choose>
 <c:when test="${securityLevel eq 'Public'}" >
 
 Public Area. 
-<p> <a href="/protected">Attempt to access</a> a protected resource</p>
+<p> <a href="/protected/sparklr">Access</a> your Sparklr photos</p>
 
 
 </c:when>
@@ -32,6 +32,17 @@ Public Area.
                       
                       <authz:authorize access="hasRole('ROLE_USER_SPARKLR')">
 					 <p>	You are connected with Sparklr. </p>
+					 
+					 <c:if test="${not empty photos}" >
+					 	<label for="photo">Your Photos</label>
+					 	<select name="photo">
+					 	<c:forEach var="photo" items="${photos}">
+					 		<option name="<c:out value="${photo.id}" />"><c:out value="${photo.name}" /></option>
+					 	</c:forEach>
+					 	</select>
+					 
+					 </c:if>
+					 
                     </authz:authorize>
                     
            

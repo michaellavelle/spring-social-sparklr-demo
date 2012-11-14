@@ -29,6 +29,8 @@
 	<!-- Scan classpath for components, including our Social Security Configuration 
 		class -->
 	<context:component-scan base-package="org.socialsignin.springsocial.security" />
+	
+	<context:component-scan base-package="org.socialsignin.springsocial.sparklr" />
 
 	<context:component-scan base-package="org.socialsignin.provider" />
 
@@ -59,17 +61,10 @@
 	<security:http use-expressions="true"
 		entry-point-ref="springSocialSecurityEntryPoint" xmlns="http://www.springframework.org/schema/security">
 
-		<intercept-url pattern="/protected/twitter" access="hasRole('ROLE_USER_TWITTER')" />
-		<intercept-url pattern="/protected/facebook" access="hasRole('ROLE_USER_FACEBOOK')" />
 		<intercept-url pattern="/protected/sparklr" access="hasRole('ROLE_USER_SPARKLR')" />
-		<intercept-url pattern="/protected/facebookTwitter" access="hasRole('ROLE_USER_FACEBOOK') and hasRole('ROLE_USER_TWITTER')" />
 		<intercept-url pattern="/protected/**" access="hasRole('ROLE_USER')" />
-		
 		<intercept-url pattern="/oauthconnect.jsp" access="hasRole('ROLE_USER')" />
-
         <access-denied-handler ref="springSocialSecurityAccessDeniedHandler"/>
-
-
 		<security:logout logout-url="/logout" />
 
 		<anonymous />

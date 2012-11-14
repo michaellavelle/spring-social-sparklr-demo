@@ -1,4 +1,4 @@
-package org.socialsignin.springsocial.security.demo;
+package org.socialsignin.springsocial.sparklr.demo;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAda
 import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
 
 @Configuration
-public class SpringSocialSecurityDemoWebappConfig {
+public class SpringSocialSparklrDemoWebappConfig {
 
 	@Autowired
 	private DataSource dataSource;

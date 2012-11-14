@@ -1,4 +1,4 @@
-package org.socialsignin.springsocial.security.demo;
+package org.socialsignin.springsocial.sparklr.demo;
 
 import java.util.ArrayList;
 

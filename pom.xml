@@ -10,11 +10,9 @@
 	<properties>
 		<org.springframework.version>3.1.2.RELEASE</org.springframework.version>
 		<org.springframework.social.version>1.0.2.RELEASE</org.springframework.social.version>
-		<org.springframework.social.facebook.version>1.0.2.RELEASE</org.springframework.social.facebook.version>
 		<org.springframework.social.sparklr.version>1.0.2-SNAPSHOT</org.springframework.social.sparklr.version>
 		<org.springframework.security.version>3.1.2.RELEASE</org.springframework.security.version>
 		<org.socialsignin.spring.security.version>1.0.2.RELEASE</org.socialsignin.spring.security.version>
-		
 	</properties>
 	<repositories>
  		<repository>
@@ -31,16 +29,6 @@
 		<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>1.8.0.1 </version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-twitter</artifactId>
-			<version>${org.springframework.social.version}</version>
-		</dependency>
-			<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-facebook</artifactId>
-			<version>${org.springframework.social.facebook.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.social</groupId>
@@ -135,7 +123,7 @@
 					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-							<port>8080</port>
+							<port>8081</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
