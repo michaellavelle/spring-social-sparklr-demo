@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.social.connect.ConnectionFactory;
 import org.springframework.social.connect.web.ConnectInterceptor;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.sparklr.api.Sparklr;
 import org.springframework.social.sparklr.connect.SparklrConnectionFactory;
 
