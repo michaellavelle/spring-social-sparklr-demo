@@ -57,8 +57,23 @@ The application has two primary pages, the public home page ( http://localhost:8
 Spring Security is configured in the spring-config.xml file to treat the protected url as a protected resource and delegates
 to spring-social-security for authentication via the springSocialSecurityAuthenticationFilter bean.
 
-Users are then asked to login via spring-social, and once they have authenticated with Twitter they are redirected back
+Users are then asked to login via spring-social, and once they have authenticated with Sparklr they are redirected back
 to the application and locally logged in.
+
+Running the customised Sparklr application
+------------------------------------------
+
+git clone https://github.com/michaellavelle/spring-security-oauth.git
+
+cd spring-security-oauth
+
+git checkout -b spring-social-support origin/spring-social-support
+
+mvn install -P bootstrap
+
+cd samples/oauth2/sparklr
+
+mvn tomcat:run
 
 Application overview
 --------------------
