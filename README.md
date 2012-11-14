@@ -1,4 +1,4 @@
-Spring Social Security Demo
+Spring Social Sparklr Demo
 ===========================
 
 Simple Hello World Webapp demonstrating the <a href="https://github.com/michaellavelle/spring-social-sparklr">
