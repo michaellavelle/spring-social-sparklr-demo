@@ -1,10 +1,22 @@
 Spring Social Security Demo
 ===========================
 
-Simple Hello World Webapp demonstrating the <a href="https://github.com/socialsignin/spring-social-security">
-spring-social-security</a> module.
+Simple Hello World Webapp demonstrating the <a href="https://github.com/michaellavelle/spring-social-sparklr">
+spring-social-sparklr</a> and <a href="https://github.com/socialsignin/spring-social-security">
+spring-social-security</a> modules.
 
-Resources in the application are protected using provider specific roles such has ROLE_USER_TWITTER or ROLE_USER_FACEBOOK, or
+Requires a customised version of the Sparklr application to be running on port 8080.
+
+The customised Sparklr simply adds an endpoint to the base Sparklr project which returns the currently
+authenticated user details to support spring social - the code is found in the spring-social-support branch of the following project:
+
+https://github.com/michaellavelle/spring-security-oauth
+
+Background
+----------
+
+
+Resources in the application are protected using provider specific roles such has ROLE_USER_SPARKLR, or
 simply by ROLE_USER.
 
 Spring Security is configured with the SpringSocialSecurityAuthenticationFilter which ensures that users attempting to
@@ -26,31 +38,21 @@ from Spring Social Security - see the forked demo at https://github.com/michaell
 Running the demo
 ----------------
 
-/src/main/resources/environment.properties must be populated with Twitter consumer key and secret and Facebook clientId
-and secret for this application to run.   The return url of the Facebook client account must also be configured
-to be the connection url for this application - http://localhost:8080/ . As Twitter allows any return
-url by default, no such requirement is needed for the Twitter client account.
-
-Twitter and Facebook are two arbitrary spring-social providers - alternative providers can be used instead - they
-must simply be registered in place of the Twitter/Facebook connection factory classes in SpringSocialSecurityDemoWebappConfig.
-
 This webapp consists of a basic implementation of Spring Social framework, configured with an in-memory datasource
 for persistence of UserConnection data.   This in-memory datasource (configured in spring-config.xml) can be replaced
 with custom datasource as necessary.  The PostContruct method in SpringSocialSecurityDemoWebappConfig can be removed if the
 in-memory database is replaced.
 
-To get started , clone the spring-social-security-demo project.  Once the Twitter and Facebook client details have been populated in the
-environment.properties file, and the Facebook client account has been set up with a return url of 
-http://localhost:8080 the application can be started using the in-built Jetty plugin:
+To get started , clone the spring-social-sparklr-demo project and then execute
 
 mvn jetty:run
 
 from the base directory of the spring-social-security-demo project.
 
-Access http://localhost:8080/ in your web browser.
+Access http://localhost:8081/ in your web browser.
 
-The application has two primary pages, the public home page ( http://localhost:8080/ ) and a protected resource
-( http://localhost:8080/protected ).    
+The application has two primary pages, the public home page ( http://localhost:8081/ ) and a sparklr-protected resource
+( http://localhost:8081/protected/sparklr ).    
 
 Spring Security is configured in the spring-config.xml file to treat the protected url as a protected resource and delegates
 to spring-social-security for authentication via the springSocialSecurityAuthenticationFilter bean.
@@ -120,11 +122,8 @@ is registered for each post-login connect provider -->
 	<bean class="org.springframework.social.connect.web.ConnectController">
 		<!-- relies on by-type autowiring for the constructor-args -->
 		<property name="applicationUrl" value="${application.secureUrl}" />
-		<property name="interceptors">
-			<list>
-    	    	<ref bean="facebookConnectInterceptor" />
-			</list>
-		</property>
+		<property name="interceptors" ref="connectInterceptorList">
+
 	</bean>
 
 
@@ -132,6 +131,6 @@ is registered for each post-login connect provider -->
 
 ```
 
-The only additional code which is needed for this spring-social-security demo is the FacebookConnectInterceptor,
+The only additional code which is needed for this spring-social-security demo is the SparklrConnectInterceptor,
 needed because the Spring-Social framework requires API-specific connect interceptors to be registered before
 they can be called.  This interceptor is registered with the ConnectController as above.
