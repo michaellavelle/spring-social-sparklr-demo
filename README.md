@@ -5,12 +5,9 @@ Simple Hello World Webapp demonstrating the <a href="https://github.com/michaell
 spring-social-sparklr</a> and <a href="https://github.com/socialsignin/spring-social-security">
 spring-social-security</a> modules.
 
-Requires a customised version of the Sparklr application to be running on port 8080.
+Requires version 1.0.1-SNAPSHOT of the Sparklr application from spring-security-oauth ( https://github.com/SpringSource/spring-security-oauth ) 
+to be running on port 8080.
 
-The customised Sparklr simply adds an endpoint to the base Sparklr project which returns the currently
-authenticated user details to support spring social - the code is found in the spring-social-support branch of the following project:
-
-https://github.com/michaellavelle/spring-security-oauth
 
 Background
 ----------
@@ -60,14 +57,12 @@ to spring-social-security for authentication via the springSocialSecurityAuthent
 Users are then asked to login via spring-social, and once they have authenticated with Sparklr they are redirected back
 to the application and locally logged in.
 
-Running the customised Sparklr application
+Running the Sparklr application
 ------------------------------------------
 
-git clone https://github.com/michaellavelle/spring-security-oauth.git
+git clone https://github.com/SpringSource/spring-security-oauth.git
 
 cd spring-security-oauth
-
-git checkout -b spring-social-support origin/spring-social-support
 
 mvn install -P bootstrap
 
