@@ -14,7 +14,7 @@
   <form class="login"action="http://localhost:8081/signin/sparklr" method="POST">
 	<p><input type="submit" value="Login with Sparklr" /></p>
 </form> 
-
+ 
 
 </authz:authorize>
 

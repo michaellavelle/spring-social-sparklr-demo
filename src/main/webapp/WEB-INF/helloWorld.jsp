@@ -29,7 +29,7 @@ Public Area.
 						You are logged in locally as <c:out value="${userName}" />. &nbsp;<a href="/logout">Logout</a></p>
 						
                     </authz:authorize>
-                      
+                       
                       <authz:authorize access="hasRole('ROLE_USER_SPARKLR')">
 					 <p>	You are connected with Sparklr. </p>
 					 

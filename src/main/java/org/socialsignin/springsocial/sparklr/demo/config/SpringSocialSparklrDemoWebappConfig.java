@@ -1,6 +1,5 @@
-package org.socialsignin.springsocial.sparklr.demo;
+package org.socialsignin.springsocial.sparklr.demo.config;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -14,15 +13,28 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.social.connect.support.ConnectionFactoryRegistry;
-import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
-import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
+import org.springframework.social.UserIdSource;
+import org.springframework.social.connect.ConnectionSignUp;
+import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Configuration
 public class SpringSocialSparklrDemoWebappConfig {
+	
 
+	// Handle to users connection repository - allows us to set connection sign up in post construct
+	@Autowired
+	private UsersConnectionRepository jdbcUsersConnectionRepository;
+	
+	@Autowired
+	private ConnectionSignUp springSocialSecurityConnnectionSignUp;
+	
 	@Autowired
 	private DataSource dataSource;
+	
+	@Autowired
+	private UserIdSource userIdSource;
 
 	/**
 	 * Used to configure the in-memory HSQLDB database Remove this method if
@@ -34,8 +46,6 @@ public class SpringSocialSparklrDemoWebappConfig {
 	public void createDatabaseTable() throws IOException {
 		Resource resource = new ClassPathResource(
 				"org/springframework/social/connect/jdbc/JdbcUsersConnectionRepository.sql");
-		BufferedInputStream is = new BufferedInputStream(
-				resource.getInputStream());
 		final char[] buffer = new char[0x10000];
 		StringBuilder out = new StringBuilder();
 		Reader in = new InputStreamReader(resource.getInputStream(), "UTF-8");
@@ -49,28 +59,20 @@ public class SpringSocialSparklrDemoWebappConfig {
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.execute(out.toString());
-
 	}
-
 	
-	@Bean
-	public ConnectionFactoryRegistry connectionFactoryRegistry() {
-		return new ConnectionFactoryRegistry();
-	}
-
 
 	@Bean
-	public DefaultAnnotationHandlerMapping handlerMapping() throws Exception {
+	public RequestMappingHandlerMapping handlerMapping() throws Exception {
 
-		DefaultAnnotationHandlerMapping mapping = new DefaultAnnotationHandlerMapping();
+		 RequestMappingHandlerMapping mapping = new  RequestMappingHandlerMapping();
 		return mapping;
 	}
 	
-
 	@Bean
-	public AnnotationMethodHandlerAdapter handlerAdapter() throws Exception {
+	public RequestMappingHandlerAdapter handlerAdapter() throws Exception {
 
-		AnnotationMethodHandlerAdapter mapping = new AnnotationMethodHandlerAdapter();
+		RequestMappingHandlerAdapter mapping = new RequestMappingHandlerAdapter();
 
 		return mapping;
 

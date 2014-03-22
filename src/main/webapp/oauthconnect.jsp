@@ -16,7 +16,7 @@
 	<p><input type="submit" value="Connect with Sparklr" /></p>
 </form> 
 </authz:authorize>
-
+ 
 </body>
 </html>
 
