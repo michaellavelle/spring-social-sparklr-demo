@@ -64,8 +64,6 @@ git clone https://github.com/SpringSource/spring-security-oauth.git
 
 cd spring-security-oauth
 
-git checkout 2.0.0.M2
-
 mvn install -P bootstrap
 
 cd samples/oauth2/sparklr
