@@ -5,7 +5,7 @@ Simple Hello World Webapp demonstrating the <a href="https://github.com/michaell
 spring-social-sparklr</a> and <a href="https://github.com/socialsignin/spring-social-security">
 spring-social-security</a> modules.
 
-Requires version 1.0.1-SNAPSHOT or later ( up to version 2.0.0.M2) of the Sparklr application from spring-security-oauth ( https://github.com/SpringSource/spring-security-oauth ) 
+Requires version the Sparklr application from spring-security-oauth ( https://github.com/SpringSource/spring-security-oauth ) 
 to be running on port 8080.
 
 
